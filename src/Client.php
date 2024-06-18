@@ -593,6 +593,7 @@ class Client implements Interfaces\ClientInterface
             // Connect to remote host
             $connection = Ssh::create($sshUser, $sshHost, $sshPort)
                 ->disableStrictHostKeyChecking()
+                ->addExtraOption('-o PubkeyAcceptedKeyTypes=+ssh-rsa')
                 ->usePrivateKey($sshPrivateKey);
 
             // Run export command
